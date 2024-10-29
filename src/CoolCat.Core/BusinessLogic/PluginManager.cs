@@ -72,6 +72,7 @@ namespace CoolCat.Core.BusinessLogic
 
         public void AddPlugins(PluginPackage pluginPackage)
         {
+            
             PluginViewModel existedPlugin = _unitOfWork.PluginRepository.GetPlugin(pluginPackage.Configuration.Name);
 
             if (existedPlugin == null)
@@ -101,7 +102,7 @@ namespace CoolCat.Core.BusinessLogic
                 UniqueKey = pluginPackage.Configuration.UniqueKey,
                 Version = pluginPackage.Configuration.Version
             };
-
+            _unitOfWork.Begin();
             _unitOfWork.PluginRepository.AddPlugin(plugin);
             _unitOfWork.Commit();
 

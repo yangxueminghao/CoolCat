@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using MySql.Data.MySqlClient;
 using System;
+using System.IO;
 using System.Threading;
 
 namespace CoolCat
@@ -102,8 +103,8 @@ namespace CoolCat
 #if DEBUG
             app.UseStaticFiles(new StaticFileOptions
             {
-                FileProvider = new PhysicalFileProvider(@"F:\D1\CoolCat\src\CoolCat\wwwroot")
-                //FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot"))
+                //FileProvider = new PhysicalFileProvider(@"F:\D1\CoolCat\src\CoolCat\wwwroot")
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot"))
             });
 #endif
 

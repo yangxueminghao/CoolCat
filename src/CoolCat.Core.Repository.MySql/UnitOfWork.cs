@@ -1,9 +1,12 @@
 ﻿using CoolCat.Core.Contracts;
 using CoolCat.Core.Repositories;
 using Dapper;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
+using System.Linq;
 
 namespace CoolCat.Core.Repository.MySql
 {
@@ -70,6 +73,18 @@ namespace CoolCat.Core.Repository.MySql
             {
                 throw new Exception("Transaction is missing. Please call the Begin method first.");
             }
+            //foreach (Command command in _commands)
+            //{
+            //    var cmd = _dbConnection.CreateCommand();
+            //    cmd.CommandType = CommandType.Text;
+            //    cmd.CommandText = command.Sql.Trim();
+            //    cmd.Parameters.Clear();
+            //    foreach (var para in command.Parameters.Cast<DbParameter>())
+            //    {
+            //        cmd.Parameters.Add(para);
+            //    } 
+            //    cmd.ExecuteNonQuery();
+            //}
 
             _transactionScope.Commit();
         }

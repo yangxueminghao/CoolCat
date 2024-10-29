@@ -39,7 +39,7 @@
         }
 
         $.ajax({
-            url: '/System/Install',
+            url: '/Admin/System/Install',
             type: 'POST',
             data: JSON.stringify({ "modules": data }),
             contentType: "application/json",
